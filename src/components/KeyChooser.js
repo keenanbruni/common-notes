@@ -4,25 +4,16 @@ import DropdownButton from 'react-bootstrap/DropdownButton'
 
 
 export default class KeyChooser extends React.Component {
-    constructor() {
-        super()
-        this.state = {
-            key: ""
-        }
-    }
-
     onKeyChoice = (e) => {
         e.preventDefault()
-        const key = e.target.innerHTML
-        this.setState(() => ({ key }))
-
-        console.log(key)
+        const keyChoice = e.target.innerHTML
+        this.props.handleKeyChoice(keyChoice)
     }
 
     render() {
         return (
             <div>
-                <DropdownButton id="dropdown-item-button" title="Select A Key">
+                <DropdownButton renderMenuOnMount={true} id="dropdown-item-button" title="Select A Root Key">
                     <Dropdown.Item as="button" onClick={this.onKeyChoice}>C</Dropdown.Item>
                     <Dropdown.Item as="button" onClick={this.onKeyChoice}>C#/Db</Dropdown.Item>
                     <Dropdown.Item as="button" onClick={this.onKeyChoice}>D</Dropdown.Item>

@@ -1,15 +1,32 @@
-export const cMajor = [
-    "C", "D", "E", "F", "G", "A", "B"
-]
+// Keys Follow The Circle of Fifths, Major then Minor
 
+// Major Scales
+export const cMajor = ["C", "D", "E", "F", "G", "A", "B"]
+export const gMajor = ["G", "A", "B", "C", "D", "E", "F#"]
+export const dMajor = ["D", "E", "F#", "G", "A", "B", "C#"]
+export const aMajor = ["A", "B", "C#", "D", "E", "F#", "G#"]
+export const eMajor = ["E", "F#", "G#", "A", "B", "C#", "D#"]
+export const bMajor = ["B", "C#", "D#", "E", "F#", "G#", "A#"]
+export const cFlatMajor = ["Cb", "Db", "Eb", "Fb", "Gb", "Ab", "Bb"]
+export const gFlatMajor = ["Gb", "Ab", "Bb", "Cb", "Db", "Eb", "F"]
+export const fSharpMajor = ["F#", "G#", "A#", "B", "C#", "D#", "E#"]
+export const dFlatMajor = ["Db", "Eb", "F", "Gb", "Ab", "Bb", "C"]
+export const cSharpMajor = ["C#", "D#", "E#", "F#", "G#", "A#", "B#"]
+export const aFlatMajor = ["Ab", "Bb", "C", "Db", "Eb", "F", "G"]
+export const eFlatMajor = ["Eb", "F", "G", "Ab", "Bb", "C", "D"]
+export const bFlatMajor = ["Bb", "C", "D", "Eb", "F", "G", "A"]
+export const fMajor = ["F", "G", "A", "Bb", "C", "D", "E"]
+
+// Minor Scales
 export const aMinor = ["A", "B", "C", "D", "E", "F", "G"]
-
-export const dMinor = [
-    "D", "E", "F", "G", "A", "Bb", "C"
-]
-
-export const gMajor = [
-    "G", "A", "B", "C", "D", "E", "Gb"
-]
-
-
+export const eMinor = ["E", "F#", "G", "A", "B", "C", "D"]
+export const bMinor = ["B", "C#", "D", "E", "F#", "G", "A"]
+export const fSharpMinor = ["F#", "G#", "A", "B", "C#", "D", "E"]
+export const cSharpMinor = ["C#", "D#", "E", "F#", "G#", "A", "B"]
+export const gSharpMinor = ["G#", "A#", "B", "C#", "D#", "E", "F#"]
+export const eFlatMinor = ["Eb", "F", "Gb", "Ab", "Bb", "Cb", "Db"]
+export const bFlatMinor = ["Bb", "C", "Db", "Eb", "F", "Gb", "Ab"]
+export const fMinor = ["F", "G", "Ab", "Bb", "C", "Db", "Eb"]
+export const cMinor = ["C", "D", "Eb", "F", "G", "Ab", "Bb"]
+export const gMinor = ["G", "A", "Bb", "C", "D", "Eb", "F"]
+export const dMinor = ["D", "E", "F", "G", "A", "Bb", "C"]

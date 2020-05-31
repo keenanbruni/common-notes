@@ -1,24 +1,28 @@
 import React from 'react'
-import KeyChooser from './KeyChooser'
-import KeyDisplay from './KeyDisplay'
-import commonNotes from './KeyCompare'
+import ComparisonKeyChooser from './ComparisonKeyChooser'
+import RootKeyChooser from './RootKeyChooser'
+import KeyCompare from './KeyCompare'
 
 class Dashboard extends React.Component {
     state = {
-        keyChoice: ""
+        comparisonKeyChoice: "",
+        rootKeyChoice: ""
     }
 
-    handleKeyChoice = (keyChoice) => {
-        this.setState(() => ({ keyChoice }))
-        console.log(this.state.keyChoice, "is in the state")
+    handleRootKeyChoice = (rootKeyChoice) => {
+        this.setState(() => ({ rootKeyChoice }))
+    }
+
+    handleComparisonKeyChoice = (comparisonKeyChoice) => {
+        this.setState(() => ({ comparisonKeyChoice }))
     }
 
     render() {
         return (
             <div>
-                <KeyChooser handleKeyChoice={this.handleKeyChoice} />
-                <KeyDisplay keyChoice={this.state.keyChoice} />
-                {commonNotes}
+                <RootKeyChooser handleRootKeyChoice={this.handleRootKeyChoice} />
+                <ComparisonKeyChooser handleComparisonKeyChoice={this.handleComparisonKeyChoice} rootKeyChoice={this.state.rootKeyChoice} rootKeyChosen={this.state.rootKeyChosen}/>
+                {this.state.comparisonKeyChoice && this.state.rootKeyChoice ? <KeyCompare rootKeyChoice={this.state.rootKeyChoice} comparisonKeyChoice={this.state.comparisonKeyChoice} /> : ""}
             </div>
         )
     }

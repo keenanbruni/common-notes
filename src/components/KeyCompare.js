@@ -1,4 +1,5 @@
 import React from 'react'
+import CommonNotes from './CommonNotes'
 import { cMajor, cSharpMajor, dFlatMajor, dMajor, eFlatMajor, eMajor, fMajor, fSharpMajor, gFlatMajor, gMajor, aFlatMajor, aMajor, bFlatMajor, bMajor, cFlatMajor, cMinor, cSharpMinor, dMinor, eFlatMinor, eMinor, fMinor, fSharpMinor, gMinor, gSharpMinor, aMinor, bFlatMinor, bMinor } from './notes'
 
 export default class KeyCompare extends React.Component {
@@ -8,17 +9,14 @@ export default class KeyCompare extends React.Component {
         comparisonKeyArray: []
     }
 
-    handleCommonNotes = (commonNotes) => {
-        this.props.handleCommonNotes(commonNotes)
-    }
-
     static getDerivedStateFromProps(nextProps, prevState) {
         let rootKeyArrayStorage = []
         let comparisonKeyArrayStorage = []
+        let commonNotesStorage = []
 
         const setRootKeyArray = () => {
             if (nextProps.rootKeyChoice === "C") { rootKeyArrayStorage = cMajor }
-            else if (nextProps.rootKeyChoice === "C#") { rootKeyArrayStorage = cSharpMajor  }
+            else if (nextProps.rootKeyChoice === "C#") { rootKeyArrayStorage = cSharpMajor }
             else if (nextProps.rootKeyChoice === "Db") { rootKeyArrayStorage = dFlatMajor }
             else if (nextProps.rootKeyChoice === "D") { rootKeyArrayStorage = dMajor }
             else if (nextProps.rootKeyChoice === "Eb") { rootKeyArrayStorage = eFlatMajor }
@@ -54,7 +52,7 @@ export default class KeyCompare extends React.Component {
             else if (nextProps.comparisonKeyChoice === "E") { comparisonKeyArrayStorage = eMajor }
             else if (nextProps.comparisonKeyChoice === "F") { comparisonKeyArrayStorage = fMajor }
             else if (nextProps.comparisonKeyChoice === "F#") { comparisonKeyArrayStorage = fSharpMajor }
-            else if (nextProps.comparisonKeyChoice === "Gb") { comparisonKeyArrayStorage =   gFlatMajor }
+            else if (nextProps.comparisonKeyChoice === "Gb") { comparisonKeyArrayStorage = gFlatMajor }
             else if (nextProps.comparisonKeyChoice === "G") { comparisonKeyArrayStorage = gMajor }
             else if (nextProps.comparisonKeyChoice === "Ab") { comparisonKeyArrayStorage = aFlatMajor }
             else if (nextProps.comparisonKeyChoice === "A") { comparisonKeyArrayStorage = aMajor }
@@ -62,7 +60,7 @@ export default class KeyCompare extends React.Component {
             else if (nextProps.comparisonKeyChoice === "B") { comparisonKeyArrayStorage = bMajor }
             else if (nextProps.comparisonKeyChoice === "Cb") { comparisonKeyArrayStorage = cFlatMajor }
             else if (nextProps.comparisonKeyChoice === "C minor") { comparisonKeyArrayStorage = cMinor }
-            else if (nextProps.comparisonKeyChoice === "C# minor") { comparisonKeyArrayStorage =  cSharpMinor }
+            else if (nextProps.comparisonKeyChoice === "C# minor") { comparisonKeyArrayStorage = cSharpMinor }
             else if (nextProps.comparisonKeyChoice === "D minor") { comparisonKeyArrayStorage = dMinor }
             else if (nextProps.comparisonKeyChoice === "Eb minor") { comparisonKeyArrayStorage = eFlatMinor }
             else if (nextProps.comparisonKeyChoice === "E minor") { comparisonKeyArrayStorage = eMinor }
@@ -74,13 +72,21 @@ export default class KeyCompare extends React.Component {
             else if (nextProps.comparisonKeyChoice === "Bb minor") { comparisonKeyArrayStorage = bFlatMinor }
             else if (nextProps.comparisonKeyChoice === "B minor") { comparisonKeyArrayStorage = bMinor }
         }
+        const compareKeys = () => {
+            const keysToCompare = []
+            keysToCompare.push(rootKeyArrayStorage, comparisonKeyArrayStorage)
+            const commonNotes = keysToCompare.reduce((p, c) => p.filter(e => c.includes(e)))
+            commonNotesStorage = commonNotes
+        }
 
-        if (nextProps.rootKeyChoice && nextProps.comparisonKeyChoice){
+        if (nextProps.rootKeyChoice && nextProps.comparisonKeyChoice) {
             setRootKeyArray()
             setComparisonKeyArray()
+            compareKeys()
             return {
-                rootKeyArray : rootKeyArrayStorage,
-                comparisonKeyArray : comparisonKeyArrayStorage
+                rootKeyArray: rootKeyArrayStorage,
+                comparisonKeyArray: comparisonKeyArrayStorage,
+                commonNotes: commonNotesStorage
             }
         }
     }
@@ -88,7 +94,7 @@ export default class KeyCompare extends React.Component {
     render() {
         return (
             <div>
-                <p>{this.props.rootKeyChoice ? this.props.rootKeyChoice : "ANGUS"}</p>
+                <p>{this.state.commonNotes ? <CommonNotes commonNotes={this.state.commonNotes} /> : "ANGUS"}</p>
             </div>
         )
     }

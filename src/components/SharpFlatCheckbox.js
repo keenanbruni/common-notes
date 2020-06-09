@@ -3,7 +3,7 @@ import Form from 'react-bootstrap/Form'
 
 export default class SharpFlatCheckbox extends React.Component{
     state = {
-        checkboxChecked: false
+        checkboxChecked: true
     }
 
     handleChange = () => {

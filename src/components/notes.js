@@ -64,3 +64,19 @@ export const fMinor = ["F", "G", "G#/Ab", "A#/Bb", "C", "C#/Db", "D#/Eb"]
 export const cMinor = ["C", "D", "D#/Eb", "F", "G", "G#/Ab", "A#/Bb"]
 export const gMinor = ["G", "A", "A#/Bb", "C", "D", "D#/Eb", "F"]
 export const dMinor = ["D", "E", "F", "G", "A", "Bb", "C"]
+
+// Notes + Frequencies
+export const noteFreqs = [
+    { note:"C", frequency: 261.63 },
+    { note:"C#", frequency: 277.18 }, 
+    { note:"D", frequency: 293.67 },
+    { note:"D#", frequency: 311.13 },
+    { note:"E", frequency: 329.63 },
+    { note:"F", frequency: 349.23 },
+    { note:"F#", frequency: 369.99 },
+    { note:"G", frequency: 392 },
+    { note:"G#", frequency: 415.31 },
+    { note:"A", frequency: 440 },
+    { note:"A#", frequency: 466.16 },
+    { note:"B", frequency: 493.88 }
+  ]

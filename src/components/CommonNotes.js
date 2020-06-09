@@ -12,4 +12,4 @@ const CommonNotes = (props) => {
     )
 }
 
-export default CommonNotes
+export default CommonNotes  

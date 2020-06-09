@@ -6,87 +6,137 @@ export default class KeyCompare extends React.Component {
     state = {
         rootKeyArray: [],
         commonNotes: [],
-        comparisonKeyArray: []
+        comparisonKeyArray: [],
     }
 
-    static getDerivedStateFromProps(nextProps, prevState) {
+    componentDidMount() {
         let rootKeyArrayStorage = []
         let comparisonKeyArrayStorage = []
         let commonNotesStorage = []
 
         const setRootKeyArray = () => {
-            if (nextProps.rootKeyChoice === "C") { rootKeyArrayStorage = cMajor }
-            else if (nextProps.rootKeyChoice === "C#") { rootKeyArrayStorage = cSharpMajor }
-            else if (nextProps.rootKeyChoice === "Db") { rootKeyArrayStorage = dFlatMajor }
-            else if (nextProps.rootKeyChoice === "D") { rootKeyArrayStorage = dMajor }
-            else if (nextProps.rootKeyChoice === "Eb") { rootKeyArrayStorage = eFlatMajor }
-            else if (nextProps.rootKeyChoice === "E") { rootKeyArrayStorage = eMajor }
-            else if (nextProps.rootKeyChoice === "F") { rootKeyArrayStorage = fMajor }
-            else if (nextProps.rootKeyChoice === "F#") { rootKeyArrayStorage = fSharpMajor }
-            else if (nextProps.rootKeyChoice === "Gb") { rootKeyArrayStorage = gFlatMajor }
-            else if (nextProps.rootKeyChoice === "G") { rootKeyArrayStorage = gMajor }
-            else if (nextProps.rootKeyChoice === "Ab") { rootKeyArrayStorage = aFlatMajor }
-            else if (nextProps.rootKeyChoice === "A") { rootKeyArrayStorage = aMajor }
-            else if (nextProps.rootKeyChoice === "Bb") { rootKeyArrayStorage = bFlatMajor }
-            else if (nextProps.rootKeyChoice === "B") { rootKeyArrayStorage = bMajor }
-            else if (nextProps.rootKeyChoice === "Cb") { rootKeyArrayStorage = cFlatMajor }
-            else if (nextProps.rootKeyChoice === "C minor") { rootKeyArrayStorage = cMinor }
-            else if (nextProps.rootKeyChoice === "C# minor") { rootKeyArrayStorage = cSharpMinor }
-            else if (nextProps.rootKeyChoice === "D minor") { rootKeyArrayStorage = dMinor }
-            else if (nextProps.rootKeyChoice === "Eb minor") { rootKeyArrayStorage = eFlatMinor }
-            else if (nextProps.rootKeyChoice === "E minor") { rootKeyArrayStorage = eMinor }
-            else if (nextProps.rootKeyChoice === "F minor") { rootKeyArrayStorage = fMinor }
-            else if (nextProps.rootKeyChoice === "F# minor") { rootKeyArrayStorage = fSharpMinor }
-            else if (nextProps.rootKeyChoice === "G minor") { rootKeyArrayStorage = gMinor }
-            else if (nextProps.rootKeyChoice === "G# minor") { rootKeyArrayStorage = gSharpMinor }
-            else if (nextProps.rootKeyChoice === "A minor") { rootKeyArrayStorage = aMinor }
-            else if (nextProps.rootKeyChoice === "Bb minor") { rootKeyArrayStorage = bFlatMinor }
-            else if (nextProps.rootKeyChoice === "B minor") { rootKeyArrayStorage = bMinor }
+            if (this.props.rootKeyChoice === "C") { rootKeyArrayStorage = cMajor }
+            else if (this.props.rootKeyChoice === "C#") { rootKeyArrayStorage = cSharpMajor }
+            else if (this.props.rootKeyChoice === "Db") { rootKeyArrayStorage = dFlatMajor }
+            else if (this.props.rootKeyChoice === "D") { rootKeyArrayStorage = dMajor }
+            else if (this.props.rootKeyChoice === "Eb") { rootKeyArrayStorage = eFlatMajor }
+            else if (this.props.rootKeyChoice === "E") { rootKeyArrayStorage = eMajor }
+            else if (this.props.rootKeyChoice === "F") { rootKeyArrayStorage = fMajor }
+            else if (this.props.rootKeyChoice === "F#") { rootKeyArrayStorage = fSharpMajor }
+            else if (this.props.rootKeyChoice === "Gb") { rootKeyArrayStorage = gFlatMajor }
+            else if (this.props.rootKeyChoice === "G") { rootKeyArrayStorage = gMajor }
+            else if (this.props.rootKeyChoice === "Ab") { rootKeyArrayStorage = aFlatMajor }
+            else if (this.props.rootKeyChoice === "A") { rootKeyArrayStorage = aMajor }
+            else if (this.props.rootKeyChoice === "Bb") { rootKeyArrayStorage = bFlatMajor }
+            else if (this.props.rootKeyChoice === "B") { rootKeyArrayStorage = bMajor }
+            else if (this.props.rootKeyChoice === "Cb") { rootKeyArrayStorage = cFlatMajor }
+            else if (this.props.rootKeyChoice === "C minor") { rootKeyArrayStorage = cMinor }
+            else if (this.props.rootKeyChoice === "C# minor") { rootKeyArrayStorage = cSharpMinor }
+            else if (this.props.rootKeyChoice === "D minor") { rootKeyArrayStorage = dMinor }
+            else if (this.props.rootKeyChoice === "Eb minor") { rootKeyArrayStorage = eFlatMinor }
+            else if (this.props.rootKeyChoice === "E minor") { rootKeyArrayStorage = eMinor }
+            else if (this.props.rootKeyChoice === "F minor") { rootKeyArrayStorage = fMinor }
+            else if (this.props.rootKeyChoice === "F# minor") { rootKeyArrayStorage = fSharpMinor }
+            else if (this.props.rootKeyChoice === "G minor") { rootKeyArrayStorage = gMinor }
+            else if (this.props.rootKeyChoice === "G# minor") { rootKeyArrayStorage = gSharpMinor }
+            else if (this.props.rootKeyChoice === "A minor") { rootKeyArrayStorage = aMinor }
+            else if (this.props.rootKeyChoice === "Bb minor") { rootKeyArrayStorage = bFlatMinor }
+            else if (this.props.rootKeyChoice === "B minor") { rootKeyArrayStorage = bMinor }
         }
         const setComparisonKeyArray = () => {
-            if (nextProps.comparisonKeyChoice === "C") { comparisonKeyArrayStorage = cMajor }
-            else if (nextProps.comparisonKeyChoice === "C#") { comparisonKeyArrayStorage = cSharpMajor }
-            else if (nextProps.comparisonKeyChoice === "Db") { comparisonKeyArrayStorage = dFlatMajor }
-            else if (nextProps.comparisonKeyChoice === "D") { comparisonKeyArrayStorage = dMajor }
-            else if (nextProps.comparisonKeyChoice === "Eb") { comparisonKeyArrayStorage = eFlatMajor }
-            else if (nextProps.comparisonKeyChoice === "E") { comparisonKeyArrayStorage = eMajor }
-            else if (nextProps.comparisonKeyChoice === "F") { comparisonKeyArrayStorage = fMajor }
-            else if (nextProps.comparisonKeyChoice === "F#") { comparisonKeyArrayStorage = fSharpMajor }
-            else if (nextProps.comparisonKeyChoice === "Gb") { comparisonKeyArrayStorage = gFlatMajor }
-            else if (nextProps.comparisonKeyChoice === "G") { comparisonKeyArrayStorage = gMajor }
-            else if (nextProps.comparisonKeyChoice === "Ab") { comparisonKeyArrayStorage = aFlatMajor }
-            else if (nextProps.comparisonKeyChoice === "A") { comparisonKeyArrayStorage = aMajor }
-            else if (nextProps.comparisonKeyChoice === "Bb") { comparisonKeyArrayStorage = bFlatMajor }
-            else if (nextProps.comparisonKeyChoice === "B") { comparisonKeyArrayStorage = bMajor }
-            else if (nextProps.comparisonKeyChoice === "Cb") { comparisonKeyArrayStorage = cFlatMajor }
-            else if (nextProps.comparisonKeyChoice === "C minor") { comparisonKeyArrayStorage = cMinor }
-            else if (nextProps.comparisonKeyChoice === "C# minor") { comparisonKeyArrayStorage = cSharpMinor }
-            else if (nextProps.comparisonKeyChoice === "D minor") { comparisonKeyArrayStorage = dMinor }
-            else if (nextProps.comparisonKeyChoice === "Eb minor") { comparisonKeyArrayStorage = eFlatMinor }
-            else if (nextProps.comparisonKeyChoice === "E minor") { comparisonKeyArrayStorage = eMinor }
-            else if (nextProps.comparisonKeyChoice === "F minor") { comparisonKeyArrayStorage = fMinor }
-            else if (nextProps.comparisonKeyChoice === "F# minor") { comparisonKeyArrayStorage = fSharpMinor }
-            else if (nextProps.comparisonKeyChoice === "G minor") { comparisonKeyArrayStorage = gMinor }
-            else if (nextProps.comparisonKeyChoice === "G# minor") { comparisonKeyArrayStorage = gSharpMinor }
-            else if (nextProps.comparisonKeyChoice === "A minor") { comparisonKeyArrayStorage = aMinor }
-            else if (nextProps.comparisonKeyChoice === "Bb minor") { comparisonKeyArrayStorage = bFlatMinor }
-            else if (nextProps.comparisonKeyChoice === "B minor") { comparisonKeyArrayStorage = bMinor }
+            if (this.props.comparisonKeyChoice === "C") { comparisonKeyArrayStorage = cMajor }
+            else if (this.props.comparisonKeyChoice === "C#") { comparisonKeyArrayStorage = cSharpMajor }
+            else if (this.props.comparisonKeyChoice === "Db") { comparisonKeyArrayStorage = dFlatMajor }
+            else if (this.props.comparisonKeyChoice === "D") { comparisonKeyArrayStorage = dMajor }
+            else if (this.props.comparisonKeyChoice === "Eb") { comparisonKeyArrayStorage = eFlatMajor }
+            else if (this.props.comparisonKeyChoice === "E") { comparisonKeyArrayStorage = eMajor }
+            else if (this.props.comparisonKeyChoice === "F") { comparisonKeyArrayStorage = fMajor }
+            else if (this.props.comparisonKeyChoice === "F#") { comparisonKeyArrayStorage = fSharpMajor }
+            else if (this.props.comparisonKeyChoice === "Gb") { comparisonKeyArrayStorage = gFlatMajor }
+            else if (this.props.comparisonKeyChoice === "G") { comparisonKeyArrayStorage = gMajor }
+            else if (this.props.comparisonKeyChoice === "Ab") { comparisonKeyArrayStorage = aFlatMajor }
+            else if (this.props.comparisonKeyChoice === "A") { comparisonKeyArrayStorage = aMajor }
+            else if (this.props.comparisonKeyChoice === "Bb") { comparisonKeyArrayStorage = bFlatMajor }
+            else if (this.props.comparisonKeyChoice === "B") { comparisonKeyArrayStorage = bMajor }
+            else if (this.props.comparisonKeyChoice === "Cb") { comparisonKeyArrayStorage = cFlatMajor }
+            else if (this.props.comparisonKeyChoice === "C minor") { comparisonKeyArrayStorage = cMinor }
+            else if (this.props.comparisonKeyChoice === "C# minor") { comparisonKeyArrayStorage = cSharpMinor }
+            else if (this.props.comparisonKeyChoice === "D minor") { comparisonKeyArrayStorage = dMinor }
+            else if (this.props.comparisonKeyChoice === "Eb minor") { comparisonKeyArrayStorage = eFlatMinor }
+            else if (this.props.comparisonKeyChoice === "E minor") { comparisonKeyArrayStorage = eMinor }
+            else if (this.props.comparisonKeyChoice === "F minor") { comparisonKeyArrayStorage = fMinor }
+            else if (this.props.comparisonKeyChoice === "F# minor") { comparisonKeyArrayStorage = fSharpMinor }
+            else if (this.props.comparisonKeyChoice === "G minor") { comparisonKeyArrayStorage = gMinor }
+            else if (this.props.comparisonKeyChoice === "G# minor") { comparisonKeyArrayStorage = gSharpMinor }
+            else if (this.props.comparisonKeyChoice === "A minor") { comparisonKeyArrayStorage = aMinor }
+            else if (this.props.comparisonKeyChoice === "Bb minor") { comparisonKeyArrayStorage = bFlatMinor }
+            else if (this.props.comparisonKeyChoice === "B minor") { comparisonKeyArrayStorage = bMinor }
         }
-        const compareKeys = () => {
+        const compareKeys = (parent) => {
             const keysToCompare = []
-            keysToCompare.push(rootKeyArrayStorage, comparisonKeyArrayStorage)
+            keysToCompare.push(parent || rootKeyArrayStorage, comparisonKeyArrayStorage)
             const commonNotes = keysToCompare.reduce((p, c) => p.filter(e => c.includes(e)))
             commonNotesStorage = commonNotes
         }
 
-        if (nextProps.rootKeyChoice && nextProps.comparisonKeyChoice) {
+        if (this.props.rootKeyChoice && this.props.comparisonKeyChoice) {
             setRootKeyArray()
             setComparisonKeyArray()
             compareKeys()
-            return {
-                rootKeyArray: rootKeyArrayStorage,
-                comparisonKeyArray: comparisonKeyArrayStorage,
-                commonNotes: commonNotesStorage
+            this.props.handleInitialCommonNotes(commonNotesStorage)
+            this.setState({ rootKeyArray: rootKeyArrayStorage, comparisonKeyArray: comparisonKeyArrayStorage, commonNotes: commonNotesStorage })
+        }
+
+    }
+
+    componentDidUpdate(prevProps) {
+        if (this.props.comparisonKeyChoice !== prevProps.comparisonKeyChoice) {
+            let comparisonKeyArrayStorage = []
+            let commonNotesStorage = []
+
+            const setComparisonKeyArray = () => {
+                if (this.props.comparisonKeyChoice === "C") { comparisonKeyArrayStorage = cMajor }
+                else if (this.props.comparisonKeyChoice === "C#") { comparisonKeyArrayStorage = cSharpMajor }
+                else if (this.props.comparisonKeyChoice === "Db") { comparisonKeyArrayStorage = dFlatMajor }
+                else if (this.props.comparisonKeyChoice === "D") { comparisonKeyArrayStorage = dMajor }
+                else if (this.props.comparisonKeyChoice === "Eb") { comparisonKeyArrayStorage = eFlatMajor }
+                else if (this.props.comparisonKeyChoice === "E") { comparisonKeyArrayStorage = eMajor }
+                else if (this.props.comparisonKeyChoice === "F") { comparisonKeyArrayStorage = fMajor }
+                else if (this.props.comparisonKeyChoice === "F#") { comparisonKeyArrayStorage = fSharpMajor }
+                else if (this.props.comparisonKeyChoice === "Gb") { comparisonKeyArrayStorage = gFlatMajor }
+                else if (this.props.comparisonKeyChoice === "G") { comparisonKeyArrayStorage = gMajor }
+                else if (this.props.comparisonKeyChoice === "Ab") { comparisonKeyArrayStorage = aFlatMajor }
+                else if (this.props.comparisonKeyChoice === "A") { comparisonKeyArrayStorage = aMajor }
+                else if (this.props.comparisonKeyChoice === "Bb") { comparisonKeyArrayStorage = bFlatMajor }
+                else if (this.props.comparisonKeyChoice === "B") { comparisonKeyArrayStorage = bMajor }
+                else if (this.props.comparisonKeyChoice === "Cb") { comparisonKeyArrayStorage = cFlatMajor }
+                else if (this.props.comparisonKeyChoice === "C minor") { comparisonKeyArrayStorage = cMinor }
+                else if (this.props.comparisonKeyChoice === "C# minor") { comparisonKeyArrayStorage = cSharpMinor }
+                else if (this.props.comparisonKeyChoice === "D minor") { comparisonKeyArrayStorage = dMinor }
+                else if (this.props.comparisonKeyChoice === "Eb minor") { comparisonKeyArrayStorage = eFlatMinor }
+                else if (this.props.comparisonKeyChoice === "E minor") { comparisonKeyArrayStorage = eMinor }
+                else if (this.props.comparisonKeyChoice === "F minor") { comparisonKeyArrayStorage = fMinor }
+                else if (this.props.comparisonKeyChoice === "F# minor") { comparisonKeyArrayStorage = fSharpMinor }
+                else if (this.props.comparisonKeyChoice === "G minor") { comparisonKeyArrayStorage = gMinor }
+                else if (this.props.comparisonKeyChoice === "G# minor") { comparisonKeyArrayStorage = gSharpMinor }
+                else if (this.props.comparisonKeyChoice === "A minor") { comparisonKeyArrayStorage = aMinor }
+                else if (this.props.comparisonKeyChoice === "Bb minor") { comparisonKeyArrayStorage = bFlatMinor }
+                else if (this.props.comparisonKeyChoice === "B minor") { comparisonKeyArrayStorage = bMinor }
+            }
+
+            const compareKeys = (parent) => {
+                const keysToCompare = []
+                keysToCompare.push(parent, comparisonKeyArrayStorage)
+                const commonNotes = keysToCompare.reduce((p, c) => p.filter(e => c.includes(e)))
+                commonNotesStorage = commonNotes
+            }
+
+            if (this.props.currentCommonNotes) {
+                const currentCommonNotes = this.props.currentCommonNotes
+                setComparisonKeyArray()
+                compareKeys(currentCommonNotes)
+                this.setState({ comparisonKeyArray: comparisonKeyArrayStorage, commonNotes: commonNotesStorage })
+                this.props.handleCommonNotes(commonNotesStorage)
             }
         }
     }

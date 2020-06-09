@@ -17,7 +17,7 @@ export default class ComparisonKeyChooser extends React.Component {
     render() {
         return (
             <div>
-                <DropdownButton renderMenuOnMount={true} id="dropdown-item-button" title={this.state.keyChoice ? this.state.keyChoice : "Select Key To Compare"}>
+                <DropdownButton renderMenuOnMount={true} variant="secondary" id="dropdown-item-button" title={this.state.keyChoice ? this.state.keyChoice : "Select Key To Compare"}>
                     <Dropdown.Item as="button" onClick={this.onKeyChoice}>C</Dropdown.Item>
                     <Dropdown.Item as="button" onClick={this.onKeyChoice}>C#</Dropdown.Item>
                     <Dropdown.Item as="button" onClick={this.onKeyChoice}>Db</Dropdown.Item>

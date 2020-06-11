@@ -10,7 +10,7 @@ class Dashboard extends React.Component {
         comparisonKeyChoice: "",
         comparisonKeyChoiceTwo: "",
         comparisonKeyChoiceThree: "",
-        currentCommonNotes: [],
+        // currentCommonNotes: [],
         joinSharpsAndFlats: true,
         rootKeyChoice: ""
     }
@@ -31,13 +31,13 @@ class Dashboard extends React.Component {
         this.setState(() => ({ comparisonKeyChoiceThree }))
     }
 
-    handleInitialCommonNotes = (commonNotes) => {
-        this.setState(() => ({ currentCommonNotes: commonNotes }))
-    }
+    // handleInitialCommonNotes = (commonNotes) => {
+    //     this.setState(() => ({ currentCommonNotes: commonNotes }))
+    // }
 
-    handleCommonNotes = (commonNotes) => {
-        this.setState(() => ({ currentCommonNotes: commonNotes }))
-    }
+    // handleCommonNotes = (commonNotes) => {
+    //     this.setState(() => ({ currentCommonNotes: commonNotes }))
+    // }
 
     handleSharpToggle = () => {
         this.setState(() => ({ joinSharpsAndFlats: !this.state.joinSharpsAndFlats }))
@@ -60,22 +60,23 @@ class Dashboard extends React.Component {
 
                 {this.state.comparisonKeyChoiceThree
                     ? <KeyCompare
-                        handleCommonNotes={this.handleCommonNotes}
-                        comparisonKeyChoice={this.state.comparisonKeyChoiceThree}
-                        currentCommonNotes={this.state.currentCommonNotes}
+                        // handleCommonNotes={this.handleCommonNotes}
+                        comparisonKeyChoice={this.state.comparisonKeyChoice}
+                        comparisonKeyChoiceTwo={this.state.comparisonKeyChoiceTwo}
+                        comparisonKeyChoiceThree={this.state.comparisonKeyChoiceThree}
                         rootKeyChoice={this.state.rootKeyChoice} />
                     : this.state.comparisonKeyChoiceTwo
                         ? <KeyCompare
-                            handleCommonNotes={this.handleCommonNotes}
-                            comparisonKeyChoice={this.state.comparisonKeyChoiceTwo}
-                            currentCommonNotes={this.state.currentCommonNotes}
+                            // handleCommonNotes={this.handleCommonNotes}
+                            comparisonKeyChoice={this.state.comparisonKeyChoice}
+                            comparisonKeyChoiceTwo={this.state.comparisonKeyChoiceTwo}
                             rootKeyChoice={this.state.rootKeyChoice}
                         />
                         
                         : this.state.comparisonKeyChoice
                             ? <KeyCompare
                                 comparisonKeyChoice={this.state.comparisonKeyChoice}
-                                handleInitialCommonNotes={this.handleInitialCommonNotes}
+                                // handleInitialCommonNotes={this.handleInitialCommonNotes}
                                 rootKeyChoice={this.state.rootKeyChoice}
                             /> : ""
                 }

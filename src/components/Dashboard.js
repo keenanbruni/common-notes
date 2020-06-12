@@ -4,6 +4,9 @@ import Header from './Header'
 import KeyCompare from './KeyCompare'
 import RootKeyChooser from './RootKeyChooser'
 import SharpFlatCheckbox from './SharpFlatCheckbox'
+import Container from 'react-bootstrap/Container'
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
 
 class Dashboard extends React.Component {
     state = {
@@ -39,15 +42,14 @@ class Dashboard extends React.Component {
             <div>
                 <Header />
 
-                <RootKeyChooser handleRootKeyChoice={this.handleRootKeyChoice} />
-
-                {this.state.rootKeyChoice ?
-                    <ComparisonKeyChooser handleComparisonKeyChoice={this.handleComparisonKeyChoice} rootKeyChoice={this.state.rootKeyChoice} />
-                    : ""}
-
-                {this.state.comparisonKeyChoice ? <ComparisonKeyChooser handleComparisonKeyChoice={this.handleComparisonKeyChoiceTwo} /> : ""}
-
-                {this.state.comparisonKeyChoiceTwo ? <ComparisonKeyChooser handleComparisonKeyChoice={this.handleComparisonKeyChoiceThree} /> : ""}
+                <Container>
+                    <Row>
+                        <Col> <RootKeyChooser handleRootKeyChoice={this.handleRootKeyChoice} /> </Col>
+                        <Col>{this.state.rootKeyChoice ? <ComparisonKeyChooser handleComparisonKeyChoice={this.handleComparisonKeyChoice} rootKeyChoice={this.state.rootKeyChoice} />: ""} </Col>
+                        <Col>{this.state.comparisonKeyChoice ? <ComparisonKeyChooser handleComparisonKeyChoice={this.handleComparisonKeyChoiceTwo} /> : ""}</Col>
+                        <Col>{this.state.comparisonKeyChoiceTwo ? <ComparisonKeyChooser handleComparisonKeyChoice={this.handleComparisonKeyChoiceThree} /> : ""}</Col>
+                    </Row>
+                </Container>
 
                 {this.state.comparisonKeyChoiceThree
                     ? <KeyCompare
@@ -61,7 +63,7 @@ class Dashboard extends React.Component {
                             comparisonKeyChoiceTwo={this.state.comparisonKeyChoiceTwo}
                             rootKeyChoice={this.state.rootKeyChoice}
                         />
-                        
+
                         : this.state.comparisonKeyChoice
                             ? <KeyCompare
                                 comparisonKeyChoice={this.state.comparisonKeyChoice}

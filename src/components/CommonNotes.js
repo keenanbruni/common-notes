@@ -21,7 +21,7 @@ const CommonNotes = (props) => {
     const finalCommonNotes = finalCommonNoteReductionArray.reduce((p, c) => p.filter(e => c.includes(e)))
 
     const listItems = finalCommonNotes.map((note) =>
-        <li class="list-group-item">{note}</li>
+        <li class="list-group-item border-0">{note}</li>
     )
     return (
         <div>

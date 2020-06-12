@@ -44,39 +44,45 @@ class Dashboard extends React.Component {
 
                 <Container>
                     <Row>
-                        <Col> <RootKeyChooser handleRootKeyChoice={this.handleRootKeyChoice} /> </Col>
-                        <Col>{this.state.rootKeyChoice ? <ComparisonKeyChooser handleComparisonKeyChoice={this.handleComparisonKeyChoice} rootKeyChoice={this.state.rootKeyChoice} />: ""} </Col>
+                        <Col><RootKeyChooser handleRootKeyChoice={this.handleRootKeyChoice} /></Col>
+                        <Col>{this.state.rootKeyChoice ? <ComparisonKeyChooser handleComparisonKeyChoice={this.handleComparisonKeyChoice} rootKeyChoice={this.state.rootKeyChoice} /> : ""} </Col>
                         <Col>{this.state.comparisonKeyChoice ? <ComparisonKeyChooser handleComparisonKeyChoice={this.handleComparisonKeyChoiceTwo} /> : ""}</Col>
                         <Col>{this.state.comparisonKeyChoiceTwo ? <ComparisonKeyChooser handleComparisonKeyChoice={this.handleComparisonKeyChoiceThree} /> : ""}</Col>
                     </Row>
+                    <Row>
+                        <Col>
+                            {this.state.comparisonKeyChoiceThree
+                                ? <KeyCompare
+                                    comparisonKeyChoice={this.state.comparisonKeyChoice}
+                                    comparisonKeyChoiceTwo={this.state.comparisonKeyChoiceTwo}
+                                    comparisonKeyChoiceThree={this.state.comparisonKeyChoiceThree}
+                                    rootKeyChoice={this.state.rootKeyChoice} />
+                                : this.state.comparisonKeyChoiceTwo
+                                    ? <KeyCompare
+                                        comparisonKeyChoice={this.state.comparisonKeyChoice}
+                                        comparisonKeyChoiceTwo={this.state.comparisonKeyChoiceTwo}
+                                        rootKeyChoice={this.state.rootKeyChoice}
+                                    />
+
+                                    : this.state.comparisonKeyChoice
+                                        ? <KeyCompare
+                                            comparisonKeyChoice={this.state.comparisonKeyChoice}
+                                            rootKeyChoice={this.state.rootKeyChoice}
+                                        /> : ""
+                            }
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col>
+                            {this.state.comparisonKeyChoice && this.state.rootKeyChoice ?
+                                <SharpFlatCheckbox
+                                    handleSharpToggle={this.handleSharpToggle}
+                                />
+                                : ""
+                            }
+                        </Col>
+                    </Row>
                 </Container>
-
-                {this.state.comparisonKeyChoiceThree
-                    ? <KeyCompare
-                        comparisonKeyChoice={this.state.comparisonKeyChoice}
-                        comparisonKeyChoiceTwo={this.state.comparisonKeyChoiceTwo}
-                        comparisonKeyChoiceThree={this.state.comparisonKeyChoiceThree}
-                        rootKeyChoice={this.state.rootKeyChoice} />
-                    : this.state.comparisonKeyChoiceTwo
-                        ? <KeyCompare
-                            comparisonKeyChoice={this.state.comparisonKeyChoice}
-                            comparisonKeyChoiceTwo={this.state.comparisonKeyChoiceTwo}
-                            rootKeyChoice={this.state.rootKeyChoice}
-                        />
-
-                        : this.state.comparisonKeyChoice
-                            ? <KeyCompare
-                                comparisonKeyChoice={this.state.comparisonKeyChoice}
-                                rootKeyChoice={this.state.rootKeyChoice}
-                            /> : ""
-                }
-
-                {this.state.comparisonKeyChoice && this.state.rootKeyChoice ?
-                    <SharpFlatCheckbox
-                        handleSharpToggle={this.handleSharpToggle}
-                    />
-                    : ""
-                }
             </div>
         )
     }

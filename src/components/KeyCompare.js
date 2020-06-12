@@ -5,8 +5,8 @@ import { getNotes } from './notes'
 export default class KeyCompare extends React.Component {
     state = {
         commonNotesOne: [],
-        commonNotesTwo: [],
-        commonNotesThree: []
+        commonNotesTwo: "",
+        commonNotesThree: ""
     }
 
     componentDidMount() {
@@ -22,13 +22,12 @@ export default class KeyCompare extends React.Component {
 
         if (this.props.rootKeyChoice && this.props.comparisonKeyChoice) {
             compareKeys()
-            // this.props.handleInitialCommonNotes(commonNotesStorage)
             this.setState({ commonNotesOne: commonNotesStorage })
         }
 
     }
 
-    componentDidUpdate(prevProps, prevState) {
+    componentDidUpdate(prevProps) {
         // Updates commonNotesOne array
         if (this.props.comparisonKeyChoice !== prevProps.comparisonKeyChoice || this.props.rootKeyChoice !== prevProps.rootKeyChoice) {
             let commonNotesStorage = []
@@ -47,7 +46,7 @@ export default class KeyCompare extends React.Component {
         }
 
         // Populates commonNotesTwo array
-        if (this.props.comparisonKeyChoiceTwo !== prevProps.comparisonKeyChoiceTwo || this.props.comparisonKeyChoice !== prevProps.comparisonKeyChoice) {
+        if (this.props.comparisonKeyChoiceTwo !== prevProps.comparisonKeyChoiceTwo || (this.props.comparisonKeyChoice !== prevProps.comparisonKeyChoice && this.props.comparisonKeyChoiceTwo)) {
             let commonNotesStorage = []
 
             const compareKeys = () => {
@@ -83,8 +82,8 @@ export default class KeyCompare extends React.Component {
                 <p>
                     <CommonNotes
                         commonNotesOne={this.state.commonNotesOne}
-                        commonNotesTwo={this.state.commonNotesTwo}
-                        commonNotesThree={this.state.commonNotesThree}
+                        commonNotesTwo={this.state.commonNotesTwo ? this.state.commonNotesTwo : this.state.commonNotesOne}
+                        commonNotesThree={this.state.commonNotesThree ? this.state.commonNotesThree : this.state.commonNotesOne}
                     />
                 </p>
             </div>
@@ -92,14 +91,6 @@ export default class KeyCompare extends React.Component {
     }
 
 }
-
-// Finds common notes between 4 chords
-
-// let keysToCompare = []
-
-// keysToCompare.push(cMajor, aMinor, dMinor, gMajor)
-
-// const commonNotes = keysToCompare.reduce((p,c) => p.filter(e => c.includes(e)));
 
 // Identifies which interval each note is in reference to chord being played
 // C Major: C (I), D, (II), E (III), G (V), A (VI)

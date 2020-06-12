@@ -10,7 +10,6 @@ class Dashboard extends React.Component {
         comparisonKeyChoice: "",
         comparisonKeyChoiceTwo: "",
         comparisonKeyChoiceThree: "",
-        // currentCommonNotes: [],
         joinSharpsAndFlats: true,
         rootKeyChoice: ""
     }
@@ -30,14 +29,6 @@ class Dashboard extends React.Component {
     handleComparisonKeyChoiceThree = (comparisonKeyChoiceThree) => {
         this.setState(() => ({ comparisonKeyChoiceThree }))
     }
-
-    // handleInitialCommonNotes = (commonNotes) => {
-    //     this.setState(() => ({ currentCommonNotes: commonNotes }))
-    // }
-
-    // handleCommonNotes = (commonNotes) => {
-    //     this.setState(() => ({ currentCommonNotes: commonNotes }))
-    // }
 
     handleSharpToggle = () => {
         this.setState(() => ({ joinSharpsAndFlats: !this.state.joinSharpsAndFlats }))
@@ -60,14 +51,12 @@ class Dashboard extends React.Component {
 
                 {this.state.comparisonKeyChoiceThree
                     ? <KeyCompare
-                        // handleCommonNotes={this.handleCommonNotes}
                         comparisonKeyChoice={this.state.comparisonKeyChoice}
                         comparisonKeyChoiceTwo={this.state.comparisonKeyChoiceTwo}
                         comparisonKeyChoiceThree={this.state.comparisonKeyChoiceThree}
                         rootKeyChoice={this.state.rootKeyChoice} />
                     : this.state.comparisonKeyChoiceTwo
                         ? <KeyCompare
-                            // handleCommonNotes={this.handleCommonNotes}
                             comparisonKeyChoice={this.state.comparisonKeyChoice}
                             comparisonKeyChoiceTwo={this.state.comparisonKeyChoiceTwo}
                             rootKeyChoice={this.state.rootKeyChoice}
@@ -76,7 +65,6 @@ class Dashboard extends React.Component {
                         : this.state.comparisonKeyChoice
                             ? <KeyCompare
                                 comparisonKeyChoice={this.state.comparisonKeyChoice}
-                                // handleInitialCommonNotes={this.handleInitialCommonNotes}
                                 rootKeyChoice={this.state.rootKeyChoice}
                             /> : ""
                 }

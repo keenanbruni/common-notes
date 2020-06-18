@@ -7,18 +7,20 @@ import SharpFlatCheckbox from './SharpFlatCheckbox'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
+import IntervalCompare from './IntervalCompare'
 
 class Dashboard extends React.Component {
     state = {
         comparisonKeyChoice: "",
         comparisonKeyChoiceTwo: "",
         comparisonKeyChoiceThree: "",
+        commonNotes: "",
         joinSharpsAndFlats: true,
         rootKeyChoice: ""
     }
 
-    handleRootKeyChoice = (rootKeyChoice) => {
-        this.setState(() => ({ rootKeyChoice }))
+    handleCommonNotes = (commonNotes) => {
+        this.setState(() => ({ commonNotes }))
     }
 
     handleComparisonKeyChoice = (comparisonKeyChoice) => {
@@ -31,6 +33,10 @@ class Dashboard extends React.Component {
 
     handleComparisonKeyChoiceThree = (comparisonKeyChoiceThree) => {
         this.setState(() => ({ comparisonKeyChoiceThree }))
+    }
+
+    handleRootKeyChoice = (rootKeyChoice) => {
+        this.setState(() => ({ rootKeyChoice }))
     }
 
     handleSharpToggle = () => {
@@ -56,20 +62,26 @@ class Dashboard extends React.Component {
                                     comparisonKeyChoice={this.state.comparisonKeyChoice}
                                     comparisonKeyChoiceTwo={this.state.comparisonKeyChoiceTwo}
                                     comparisonKeyChoiceThree={this.state.comparisonKeyChoiceThree}
+                                    handleCommonNotes={this.handleCommonNotes}
                                     rootKeyChoice={this.state.rootKeyChoice} />
                                 : this.state.comparisonKeyChoiceTwo
                                     ? <KeyCompare
                                         comparisonKeyChoice={this.state.comparisonKeyChoice}
                                         comparisonKeyChoiceTwo={this.state.comparisonKeyChoiceTwo}
+                                        handleCommonNotes={this.handleCommonNotes}
                                         rootKeyChoice={this.state.rootKeyChoice}
                                     />
 
                                     : this.state.comparisonKeyChoice
                                         ? <KeyCompare
                                             comparisonKeyChoice={this.state.comparisonKeyChoice}
-                                            rootKeyChoice={this.state.rootKeyChoice}
+                                            handleCommonNotes={this.handleCommonNotes}
+                                            rootKeyChoice={this.state.rootKeyChoice}                                            
                                         /> : ""
                             }
+                        </Col>
+                        <Col>
+                            <IntervalCompare commonNotes={["A"]}/>
                         </Col>
                     </Row>
                     <Row>

@@ -6,7 +6,8 @@ export default class KeyCompare extends React.Component {
     state = {
         commonNotesOne: [],
         commonNotesTwo: "",
-        commonNotesThree: ""
+        commonNotesThree: "",
+        finalCommonNotes: ""
     }
 
     componentDidMount() {
@@ -84,6 +85,7 @@ export default class KeyCompare extends React.Component {
                         commonNotesOne={this.state.commonNotesOne}
                         commonNotesTwo={this.state.commonNotesTwo ? this.state.commonNotesTwo : this.state.commonNotesOne}
                         commonNotesThree={this.state.commonNotesThree ? this.state.commonNotesThree : this.state.commonNotesOne}
+                        handleCommonNotes={this.props.handleCommonNotes}
                     />
                 </p>
             </div>

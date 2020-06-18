@@ -96,6 +96,22 @@ export const getNotes = (keyChoice) => {
   else if (keyChoice === "B minor") { return bMinor }
 }
 
+// getFrequencies Function
+export const getFreq = (keyChoice) => {
+  if (keyChoice === "C" || "C minor") { return 261.63 }
+  else if (keyChoice === "C#/Db" || "C#" || "Db" || "C# minor") { return 277.18 }
+  else if (keyChoice === "D" || "D minor") { return 293.67 }
+  else if (keyChoice === "D#/Eb" || "D#" || "Eb" || "Eb minor") { return 311.13 }
+  else if (keyChoice === "E" || "E minor") { return 329.63 }
+  else if (keyChoice === "F" || "F minor") { return 349.23 }
+  else if (keyChoice === "F#/Gb" || "F#" || "Gb" || "F# minor") { return 369.99 }
+  else if (keyChoice === "G" || "G minor") { return 392 }
+  else if (keyChoice === "G#/Ab" || "G#" || "Ab" || "G# minor") { return 415.31 }
+  else if (keyChoice === "A" || "A minor") { return 440 }
+  else if (keyChoice === "A#/Bb" || "A#" || "Bb" || "Bb minor") { return 466.16 }
+  else if (keyChoice === "B/Cb" || "B" || "Cb" || "B minor") { return 493.88 }
+}
+
 // Notes + Frequencies
 export const noteFreqs = [
     { note:"C", frequency: 261.63 },

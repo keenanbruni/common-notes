@@ -1,33 +1,123 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 
 const CommonNotes = (props) => {
-    let commonNotesStorageOne = []
-    let commonNotesStorageTwo = []
-    let finalCommonNoteReductionArray = []
+    const [finalCommonNotesArray, setFinalCommonNotes] = useState([])
 
-    commonNotesStorageOne.push(
-        props.commonNotesOne, 
-        props.commonNotesTwo
-    )
-    commonNotesStorageTwo.push(
-        props.commonNotesTwo,
-        props.commonNotesThree
-    )
+    useEffect(() => {
+        // Compares remaining 2 common notes arrays and sets finalCommonNotes array
 
-    const commonNotesReduceOne = commonNotesStorageOne.reduce((parent, child) => parent.filter(instance => child.includes(instance)))
-    const commonNotesReduceTwo = commonNotesStorageTwo.reduce((p, c) => p.filter(e => c.includes(e))) 
+        let commonNotesStorageOne = []
+        let commonNotesStorageTwo = []
+        let finalCommonNoteReductionArray = []
 
-    finalCommonNoteReductionArray.push(commonNotesReduceOne, commonNotesReduceTwo)
-    const finalCommonNotes = finalCommonNoteReductionArray.reduce((p, c) => p.filter(e => c.includes(e)))
+        commonNotesStorageOne.push(
+            props.commonNotesOne,
+            props.commonNotesTwo
+        )
+        commonNotesStorageTwo.push(
+            props.commonNotesTwo,
+            props.commonNotesThree
+        )
 
-    const listItems = finalCommonNotes.map((note) =>
-        <li class="list-group-item border-0">{note}</li>
-    )
+        const commonNotesReduceOne = commonNotesStorageOne.reduce((parent, child) => parent.filter(instance => child.includes(instance)))
+        const commonNotesReduceTwo = commonNotesStorageTwo.reduce((p, c) => p.filter(e => c.includes(e)))
+
+        finalCommonNoteReductionArray.push(commonNotesReduceOne, commonNotesReduceTwo)
+        const finalCommonNotes = finalCommonNoteReductionArray.reduce((p, c) => p.filter(e => c.includes(e)))
+        setFinalCommonNotes(finalCommonNotes)
+        props.handleCommonNotes(finalCommonNotes)
+
+    }, [props.commonNotesOne, props.commonNotesTwo, props.commonNotesThree, props.handleCommonNotes])
+
     return (
         <div>
-            <ul class="list-group list-group-flush">{listItems}</ul>
+            {finalCommonNotesArray.map((note) => <li class="list-group-item border-0">{note}</li>)}
         </div>
     )
 }
 
-export default CommonNotes  
+export default CommonNotes
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// export default class CommonNotes extends React.Component {
+//     state = {
+//         finalCommonNotes: ""
+//     }
+
+//     componentDidMount() {
+//         let commonNotesStorageOne = []
+//         let commonNotesStorageTwo = []
+//         let finalCommonNoteReductionArray = []
+
+//         commonNotesStorageOne.push(
+//             this.props.commonNotesOne,
+//             this.props.commonNotesTwo
+//         )
+//         commonNotesStorageTwo.push(
+//             this.props.commonNotesTwo,
+//             this.props.commonNotesThree
+//         )
+
+//         const commonNotesReduceOne = commonNotesStorageOne.reduce((parent, child) => parent.filter(instance => child.includes(instance)))
+//         const commonNotesReduceTwo = commonNotesStorageTwo.reduce((p, c) => p.filter(e => c.includes(e)))
+
+//         finalCommonNoteReductionArray.push(commonNotesReduceOne, commonNotesReduceTwo)
+//         const finalCommonNotes = finalCommonNoteReductionArray.reduce((p, c) => p.filter(e => c.includes(e)))
+//         this.setState({ finalCommonNotes })
+//     }
+
+//     componentDidUpdate(prevProps) {
+//         // Fires handleCommonNotes on commonality update
+//         if (this.props.commonNotesOne !== prevProps.commonNotesOne || this.props.commonNotesTwo !== prevProps.commonNotesTwo || this.props.commonNotesThree || prevProps.commonNotesThree) {
+
+//             let commonNotesStorageOne = []
+//             let commonNotesStorageTwo = []
+//             let finalCommonNoteReductionArray = []
+
+//             commonNotesStorageOne.push(
+//                 this.props.commonNotesOne,
+//                 this.props.commonNotesTwo
+//             )
+//             commonNotesStorageTwo.push(
+//                 this.props.commonNotesTwo,
+//                 this.props.commonNotesThree
+//             )
+
+//             const commonNotesReduceOne = commonNotesStorageOne.reduce((parent, child) => parent.filter(instance => child.includes(instance)))
+//             const commonNotesReduceTwo = commonNotesStorageTwo.reduce((p, c) => p.filter(e => c.includes(e)))
+
+//             finalCommonNoteReductionArray.push(commonNotesReduceOne, commonNotesReduceTwo)
+//             const finalCommonNotes = finalCommonNoteReductionArray.reduce((p, c) => p.filter(e => c.includes(e)))
+//             this.setState({ finalCommonNotes })
+//         }
+//     }
+
+//     render() {
+//         return (
+//             <div>
+//                 {this.state.finalCommonNotes.map((note) => <li class="list-group-item border-0">{note}</li>)}
+//             </div>
+//         )
+//     }
+// }
+
+
+

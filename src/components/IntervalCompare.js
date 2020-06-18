@@ -1,23 +1,44 @@
-import React from 'react'
-import { getFreq } from './notes'
+import React, { useState, useEffect } from 'react'
+import { getFreq, getIntervalFromRatio } from './notes'
 
-export default class IntervalCompare extends React.Component {
-    state = {
-        parentKey: "",
-        compareKeyArray: "",
-        freqArray: ""
-    }
+const IntervalCompare = ({ commonNotes, parentKeyChoice }) => {
+    const [freqArray, setFreqArray] = useState([])
 
-    componentDidMount () {
-        const freqArray = this.props.commonNotes.map(note => getFreq(note))
-        this.setState({ freqArray })
-    }
+    useEffect(() => {
+        let freqArrayStorage = ""
+        let freqRatioStorage = []
+        let intervalStorage = ""
 
-    render() {
-        return (
+        // Gets frequencies for each common note
+        if (commonNotes) {freqArrayStorage = commonNotes.map(note => getFreq(note))}
+
+        // Gets ratios for each common note freq divided by the root freq
+        if (freqArrayStorage) { freqRatioStorage =
+             freqArrayStorage.map(function(noteFreq) {
+                let ratio = null
+
+                 if ( noteFreq/(getFreq(parentKeyChoice)) > 1 ) {ratio = noteFreq/getFreq(parentKeyChoice)}
+                 else if ( noteFreq/(getFreq(parentKeyChoice)) < 1 ) {ratio = 1/(noteFreq/getFreq(parentKeyChoice))}
+                 else if ( noteFreq/(getFreq(parentKeyChoice)) === 1 ) {ratio = 1}
+                
+                 return parseFloat(ratio.toFixed(2))
+             })
+        }
+
+        // Gets interval from ratio
+        intervalStorage = freqRatioStorage.map(ratio => getIntervalFromRatio(ratio))
+
+        // Sends JSX List to state for rendering
+        if (commonNotes) {setFreqArray(intervalStorage.map((note) => <li class="list-group-item border-0">{note}</li>))}
+
+    }, [commonNotes, parentKeyChoice])
+
+    return (
         <div>
-            <p>{this.state.freqArray} </p>
-        </div>         
-        )
-    }
+            {freqArray}
+        </div>
+    )
 }
+
+export default IntervalCompare
+

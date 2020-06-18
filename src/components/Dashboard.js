@@ -3,7 +3,6 @@ import ComparisonKeyChooser from './ComparisonKeyChooser'
 import Header from './Header'
 import KeyCompare from './KeyCompare'
 import RootKeyChooser from './RootKeyChooser'
-import SharpFlatCheckbox from './SharpFlatCheckbox'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
@@ -50,6 +49,7 @@ class Dashboard extends React.Component {
 
                 <Container>
                     <Row>
+                        <Col></Col>
                         <Col><RootKeyChooser handleRootKeyChoice={this.handleRootKeyChoice} /></Col>
                         <Col>{this.state.rootKeyChoice ? <ComparisonKeyChooser handleComparisonKeyChoice={this.handleComparisonKeyChoice} rootKeyChoice={this.state.rootKeyChoice} /> : ""} </Col>
                         <Col>{this.state.comparisonKeyChoice ? <ComparisonKeyChooser handleComparisonKeyChoice={this.handleComparisonKeyChoiceTwo} /> : ""}</Col>
@@ -76,23 +76,38 @@ class Dashboard extends React.Component {
                                         ? <KeyCompare
                                             comparisonKeyChoice={this.state.comparisonKeyChoice}
                                             handleCommonNotes={this.handleCommonNotes}
-                                            rootKeyChoice={this.state.rootKeyChoice}                                            
+                                            rootKeyChoice={this.state.rootKeyChoice}
                                         /> : ""
                             }
                         </Col>
                         <Col>
-                            <IntervalCompare commonNotes={["A"]}/>
+                            {this.state.commonNotes
+                                ? <IntervalCompare
+                                    commonNotes={this.state.commonNotes}
+                                    parentKeyChoice={this.state.rootKeyChoice} />
+                                : ""}
                         </Col>
-                    </Row>
-                    <Row>
                         <Col>
-                            {this.state.comparisonKeyChoice && this.state.rootKeyChoice ?
-                                <SharpFlatCheckbox
-                                    handleSharpToggle={this.handleSharpToggle}
-                                />
-                                : ""
-                            }
-                        </Col>
+                            {this.state.comparisonKeyChoice
+                                ? <IntervalCompare
+                                    commonNotes={this.state.commonNotes}
+                                    parentKeyChoice={this.state.comparisonKeyChoice} />
+                                : ""}
+                        </Col>  
+                        <Col>
+                            {this.state.comparisonKeyChoiceTwo
+                                ? <IntervalCompare
+                                    commonNotes={this.state.commonNotes}
+                                    parentKeyChoice={this.state.comparisonKeyChoiceTwo} />
+                                : ""}
+                        </Col>    
+                        <Col>
+                            {this.state.comparisonKeyChoiceThree
+                                ? <IntervalCompare
+                                    commonNotes={this.state.commonNotes}
+                                    parentKeyChoice={this.state.comparisonKeyChoiceThree} />
+                                : ""}
+                        </Col>                    
                     </Row>
                 </Container>
             </div>

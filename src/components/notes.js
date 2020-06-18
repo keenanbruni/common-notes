@@ -98,32 +98,32 @@ export const getNotes = (keyChoice) => {
 
 // getFrequencies Function
 export const getFreq = (keyChoice) => {
-  if (keyChoice === "C" || "C minor") { return 261.63 }
-  else if (keyChoice === "C#/Db" || "C#" || "Db" || "C# minor") { return 277.18 }
-  else if (keyChoice === "D" || "D minor") { return 293.67 }
-  else if (keyChoice === "D#/Eb" || "D#" || "Eb" || "Eb minor") { return 311.13 }
-  else if (keyChoice === "E" || "E minor") { return 329.63 }
-  else if (keyChoice === "F" || "F minor") { return 349.23 }
-  else if (keyChoice === "F#/Gb" || "F#" || "Gb" || "F# minor") { return 369.99 }
-  else if (keyChoice === "G" || "G minor") { return 392 }
-  else if (keyChoice === "G#/Ab" || "G#" || "Ab" || "G# minor") { return 415.31 }
-  else if (keyChoice === "A" || "A minor") { return 440 }
-  else if (keyChoice === "A#/Bb" || "A#" || "Bb" || "Bb minor") { return 466.16 }
-  else if (keyChoice === "B/Cb" || "B" || "Cb" || "B minor") { return 493.88 }
+  if (keyChoice === "C" || keyChoice === "C minor") { return 261.63 }
+  else if (keyChoice === "C#/Db" || keyChoice === "C#" || keyChoice === "Db" || keyChoice === "C# minor") { return 277.18 }
+  else if (keyChoice === "D" || keyChoice === "D minor") { return 293.67 }
+  else if (keyChoice === "D#/Eb" || keyChoice === "D#" || keyChoice === "Eb" || keyChoice === "Eb minor") { return 311.13 }
+  else if (keyChoice === "E" || keyChoice === "E minor") { return 329.63 }
+  else if (keyChoice === "F" || keyChoice === "F minor") { return 349.23 }
+  else if (keyChoice === "F#/Gb" || keyChoice === "F#" || keyChoice === "Gb" || keyChoice === "F# minor") { return 369.99 }
+  else if (keyChoice === "G" || keyChoice === "G minor") { return 392 }
+  else if (keyChoice === "G#/Ab" || keyChoice === "G#" || keyChoice === "Ab" || keyChoice === "G# minor") { return 415.31 }
+  else if (keyChoice === "A" || keyChoice === "A minor") { return 440 }
+  else if (keyChoice === "A#/Bb" || keyChoice === "A#" || keyChoice === "Bb" || keyChoice === "Bb minor") { return 466.16 }
+  else if (keyChoice === "B/Cb" || keyChoice === "B" || keyChoice === "Cb" || keyChoice === "B minor") { return 493.88 }
 }
 
-// Notes + Frequencies
-export const noteFreqs = [
-    { note:"C", frequency: 261.63 },
-    { note:"C#", frequency: 277.18 }, 
-    { note:"D", frequency: 293.67 },
-    { note:"D#", frequency: 311.13 },
-    { note:"E", frequency: 329.63 },
-    { note:"F", frequency: 349.23 },
-    { note:"F#", frequency: 369.99 },
-    { note:"G", frequency: 392 },
-    { note:"G#", frequency: 415.31 },
-    { note:"A", frequency: 440 },
-    { note:"A#", frequency: 466.16 },
-    { note:"B", frequency: 493.88 }
-  ]
+// getIntervalFromFreq Function
+export const getIntervalFromRatio = (ratio) => {
+  if (ratio === 1) { return "I" }
+  else if (ratio === 1.06) { return "minor II" }
+  else if (ratio === 1.12) { return "major II" }
+  else if (ratio === 1.19) { return "minor III" }
+  else if (ratio === 1.26) { return "major III" }
+  else if (ratio === 1.33) { return "perfect IV" }
+  else if (ratio === 1.41) { return "tritone" }
+  else if (ratio === 1.5) { return "perfect V" }
+  else if (ratio === 1.59) { return "minor VI" }
+  else if (ratio === 1.68) { return "major VI" }
+  else if (ratio === 1.78) { return "minor VII" }
+  else if (ratio === 1.89) { return "major VII" }
+}

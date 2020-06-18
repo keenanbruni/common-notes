@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 
-const CommonNotes = (props) => {
+const CommonNotes = ({commonNotesOne, commonNotesTwo, commonNotesThree, handleCommonNotes}) => {
     const [finalCommonNotesArray, setFinalCommonNotes] = useState([])
 
     useEffect(() => {
@@ -11,12 +11,12 @@ const CommonNotes = (props) => {
         let finalCommonNoteReductionArray = []
 
         commonNotesStorageOne.push(
-            props.commonNotesOne,
-            props.commonNotesTwo
+            commonNotesOne,
+            commonNotesTwo
         )
         commonNotesStorageTwo.push(
-            props.commonNotesTwo,
-            props.commonNotesThree
+            commonNotesTwo,
+            commonNotesThree
         )
 
         const commonNotesReduceOne = commonNotesStorageOne.reduce((parent, child) => parent.filter(instance => child.includes(instance)))
@@ -25,9 +25,9 @@ const CommonNotes = (props) => {
         finalCommonNoteReductionArray.push(commonNotesReduceOne, commonNotesReduceTwo)
         const finalCommonNotes = finalCommonNoteReductionArray.reduce((p, c) => p.filter(e => c.includes(e)))
         setFinalCommonNotes(finalCommonNotes)
-        props.handleCommonNotes(finalCommonNotes)
+        handleCommonNotes(finalCommonNotes)
 
-    }, [props.commonNotesOne, props.commonNotesTwo, props.commonNotesThree, props.handleCommonNotes])
+    }, [commonNotesOne, commonNotesTwo, commonNotesThree, handleCommonNotes])
 
     return (
         <div>

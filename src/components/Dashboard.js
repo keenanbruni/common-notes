@@ -46,70 +46,71 @@ class Dashboard extends React.Component {
         return (
             <div>
                 <Header />
-
-                <Container>
-                    <Row>
-                        <Col></Col>
-                        <Col><RootKeyChooser handleRootKeyChoice={this.handleRootKeyChoice} /></Col>
-                        <Col>{this.state.rootKeyChoice ? <ComparisonKeyChooser handleComparisonKeyChoice={this.handleComparisonKeyChoice} rootKeyChoice={this.state.rootKeyChoice} /> : ""} </Col>
-                        <Col>{this.state.comparisonKeyChoice ? <ComparisonKeyChooser handleComparisonKeyChoice={this.handleComparisonKeyChoiceTwo} /> : ""}</Col>
-                        <Col>{this.state.comparisonKeyChoiceTwo ? <ComparisonKeyChooser handleComparisonKeyChoice={this.handleComparisonKeyChoiceThree} /> : ""}</Col>
-                    </Row>
-                    <Row>
-                        <Col>
-                            {this.state.comparisonKeyChoiceThree
-                                ? <KeyCompare
-                                    comparisonKeyChoice={this.state.comparisonKeyChoice}
-                                    comparisonKeyChoiceTwo={this.state.comparisonKeyChoiceTwo}
-                                    comparisonKeyChoiceThree={this.state.comparisonKeyChoiceThree}
-                                    handleCommonNotes={this.handleCommonNotes}
-                                    rootKeyChoice={this.state.rootKeyChoice} />
-                                : this.state.comparisonKeyChoiceTwo
+                <div class="grid-container">
+                    <Container fluid>
+                        <Row>
+                            <Col></Col>
+                            <Col><RootKeyChooser handleRootKeyChoice={this.handleRootKeyChoice} /></Col>
+                            <Col>{this.state.rootKeyChoice ? <ComparisonKeyChooser handleComparisonKeyChoice={this.handleComparisonKeyChoice} rootKeyChoice={this.state.rootKeyChoice} /> : ""} </Col>
+                            <Col>{this.state.comparisonKeyChoice ? <ComparisonKeyChooser handleComparisonKeyChoice={this.handleComparisonKeyChoiceTwo} /> : ""}</Col>
+                            <Col>{this.state.comparisonKeyChoiceTwo ? <ComparisonKeyChooser handleComparisonKeyChoice={this.handleComparisonKeyChoiceThree} /> : ""}</Col>
+                        </Row>
+                        <Row>
+                            <Col>
+                                {this.state.comparisonKeyChoiceThree
                                     ? <KeyCompare
                                         comparisonKeyChoice={this.state.comparisonKeyChoice}
                                         comparisonKeyChoiceTwo={this.state.comparisonKeyChoiceTwo}
+                                        comparisonKeyChoiceThree={this.state.comparisonKeyChoiceThree}
                                         handleCommonNotes={this.handleCommonNotes}
-                                        rootKeyChoice={this.state.rootKeyChoice}
-                                    />
-
-                                    : this.state.comparisonKeyChoice
+                                        rootKeyChoice={this.state.rootKeyChoice} />
+                                    : this.state.comparisonKeyChoiceTwo
                                         ? <KeyCompare
                                             comparisonKeyChoice={this.state.comparisonKeyChoice}
+                                            comparisonKeyChoiceTwo={this.state.comparisonKeyChoiceTwo}
                                             handleCommonNotes={this.handleCommonNotes}
                                             rootKeyChoice={this.state.rootKeyChoice}
-                                        /> : ""
-                            }
-                        </Col>
-                        <Col>
-                            {this.state.commonNotes
-                                ? <IntervalCompare
-                                    commonNotes={this.state.commonNotes}
-                                    parentKeyChoice={this.state.rootKeyChoice} />
-                                : ""}
-                        </Col>
-                        <Col>
-                            {this.state.comparisonKeyChoice
-                                ? <IntervalCompare
-                                    commonNotes={this.state.commonNotes}
-                                    parentKeyChoice={this.state.comparisonKeyChoice} />
-                                : ""}
-                        </Col>  
-                        <Col>
-                            {this.state.comparisonKeyChoiceTwo
-                                ? <IntervalCompare
-                                    commonNotes={this.state.commonNotes}
-                                    parentKeyChoice={this.state.comparisonKeyChoiceTwo} />
-                                : ""}
-                        </Col>    
-                        <Col>
-                            {this.state.comparisonKeyChoiceThree
-                                ? <IntervalCompare
-                                    commonNotes={this.state.commonNotes}
-                                    parentKeyChoice={this.state.comparisonKeyChoiceThree} />
-                                : ""}
-                        </Col>                    
-                    </Row>
-                </Container>
+                                        />
+
+                                        : this.state.comparisonKeyChoice
+                                            ? <KeyCompare
+                                                comparisonKeyChoice={this.state.comparisonKeyChoice}
+                                                handleCommonNotes={this.handleCommonNotes}
+                                                rootKeyChoice={this.state.rootKeyChoice}
+                                            /> : ""
+                                }
+                            </Col>
+                            <Col>
+                                {this.state.commonNotes
+                                    ? <IntervalCompare
+                                        commonNotes={this.state.commonNotes}
+                                        parentKeyChoice={this.state.rootKeyChoice} />
+                                    : ""}
+                            </Col>
+                            <Col>
+                                {this.state.comparisonKeyChoice
+                                    ? <IntervalCompare
+                                        commonNotes={this.state.commonNotes}
+                                        parentKeyChoice={this.state.comparisonKeyChoice} />
+                                    : ""}
+                            </Col>  
+                            <Col>
+                                {this.state.comparisonKeyChoiceTwo
+                                    ? <IntervalCompare
+                                        commonNotes={this.state.commonNotes}
+                                        parentKeyChoice={this.state.comparisonKeyChoiceTwo} />
+                                    : ""}
+                            </Col>    
+                            <Col>
+                                {this.state.comparisonKeyChoiceThree
+                                    ? <IntervalCompare
+                                        commonNotes={this.state.commonNotes}
+                                        parentKeyChoice={this.state.comparisonKeyChoiceThree} />
+                                    : ""}
+                            </Col>                    
+                        </Row>
+                    </Container>
+                </div>
             </div>
         )
     }

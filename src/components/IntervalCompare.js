@@ -10,19 +10,22 @@ const IntervalCompare = ({ commonNotes, parentKeyChoice }) => {
         let intervalStorage = ""
 
         // Gets frequencies for each common note
-        if (commonNotes) {freqArrayStorage = commonNotes.map(note => getFreq(note))}
+        if (commonNotes) { freqArrayStorage = commonNotes.map(note => getFreq(note)) }
 
         // Gets ratios for each common note freq divided by the root freq
-        if (freqArrayStorage) { freqRatioStorage =
-             freqArrayStorage.map(function(noteFreq) {
+        if (freqArrayStorage) {
+            freqRatioStorage =
+            freqArrayStorage.map(function (noteFreq) {
                 let ratio = null
 
-                 if ( noteFreq/(getFreq(parentKeyChoice)) > 1 ) {ratio = noteFreq/getFreq(parentKeyChoice)}
-                 else if ( noteFreq/(getFreq(parentKeyChoice)) < 1 ) {ratio = 1/(noteFreq/getFreq(parentKeyChoice))}
-                 else if ( noteFreq/(getFreq(parentKeyChoice)) === 1 ) {ratio = 1}
-                
-                 return parseFloat(ratio.toFixed(2))
-             })
+                //  if ( noteFreq/(getFreq(parentKeyChoice)) > 1 ) {ratio = noteFreq/getFreq(parentKeyChoice)}
+                //  else if ( noteFreq/(getFreq(parentKeyChoice)) < 1 ) {ratio = 1/(noteFreq/getFreq(parentKeyChoice))}
+                //  else if ( noteFreq/(getFreq(parentKeyChoice)) === 1 ) {ratio = 1}
+
+                ratio = (noteFreq / (getFreq(parentKeyChoice)))
+
+                return parseFloat(ratio.toFixed(2))
+            })
         }
 
         // Gets interval from ratio
@@ -30,6 +33,7 @@ const IntervalCompare = ({ commonNotes, parentKeyChoice }) => {
 
         // Sends JSX List to state for rendering
         if (commonNotes) {setFreqArray(intervalStorage.map((note) => <li class="list-group-item border-0">{note}</li>))}
+        if (commonNotes) {console.log(freqRatioStorage)}
 
     }, [commonNotes, parentKeyChoice])
 

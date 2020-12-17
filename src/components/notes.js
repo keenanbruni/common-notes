@@ -114,16 +114,16 @@ export const getFreq = (keyChoice) => {
 
 // getIntervalFromFreq Function
 export const getIntervalFromRatio = (ratio) => {
-  if (ratio === 1) { return "I" }
-  else if (ratio === 1.06) { return "minor II" }
-  else if (ratio === 1.12) { return "major II" }
-  else if (ratio === 1.19) { return "minor III" }
-  else if (ratio === 1.26) { return "major III" }
-  else if (ratio === 1.33) { return "perfect IV" }
-  else if (ratio === 1.41) { return "tritone" }
-  else if (ratio === 1.5) { return "perfect V" }
-  else if (ratio === 1.59) { return "minor VI" }
-  else if (ratio === 1.68) { return "major VI" }
-  else if (ratio === 1.78) { return "minor VII" }
-  else if (ratio === 1.89) { return "major VII" }
+  if ((ratio === 1) || (ratio === 2) || (ratio === 0.5)) { return "I" }
+  else if ((ratio === 1.06) || (ratio === 0.94)) { return "minor II" }
+  else if ((ratio === 1.12) || (ratio === 0.89)) { return "major II" }
+  else if ((ratio === 1.19) || (ratio === 0.84)) { return "minor III" }
+  else if ((ratio === 1.26) || (ratio === 0.79)) { return "major III" }
+  else if ((ratio === 1.33) || (ratio === 0.75)) { return "perfect IV" }
+  else if ((ratio === 1.41) || (ratio === 0.71)) { return "tritone" }
+  else if ((ratio === 1.5) || (ratio === 0.67)) { return "perfect V" }
+  else if ((ratio === 1.59) || (ratio === 0.63)) { return "minor VI" }
+  else if ((ratio === 1.68) || (ratio === 0.59)) { return "major VI" }
+  else if ((ratio === 1.78) || (ratio === 0.56)) { return "minor VII" }
+  else if ((ratio === 1.89) || (ratio === 0.53)) { return "major VII" }
 }
